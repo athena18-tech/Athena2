@@ -1,0 +1,64 @@
+import speech_recognition as sr
+import pttxs3
+import pywhatkit
+import datetime
+import Wikipedia
+import pyjokes
+
+intent datetime
+listener = sr.Recognizer()
+engine = pyttsx3.init()
+voices = engine.getProperty('voices')
+engine.setProperty('voice','voices[1].id')
+
+
+def talk(text):
+    engine.say(text)
+    engine.runAndWait()
+
+
+def take_command():
+        try:
+            with sr.Microphone() as source:
+            print("Listening...")
+            voice = listener.listen(source)
+            command = listener.recognizer_google(voice)
+            command = command.lower()
+            if 'athena' in command:
+            command = command.replace('athena',' ')
+            print(command)
+        execpt: 
+                pass:
+    return command
+
+
+def run_athena():
+    comand = take_command()
+    print(command)
+    if "play" in command:
+        song = command.replace('play',' ')
+        talk("playing" + song)
+        print(song)
+        pywhatkit.playingonyt(song)
+    elif 'time' in command:
+        time = datetime.datetime.now().strftime('%I:%M %p')
+        talk('the time is' + time)
+    elif 'who is' in command:
+        person = command.replace('who is',' ')
+        info = wikipedia.summary(person, 5)
+        print(info)
+        talk(info)
+    elif "who created you" in command:
+        talk("Jude Andri M. Magbanua, he created me when he was 17, he was born on june 7,2004. He lives in philippines, he created me since year 2021")
+    elif "why did he created you" in command:
+        talk("he created me becuase of his ambition to create an articial intelligence like me and he has a last well")
+    elif "last well" in command:
+        talk("his last well is... if you are the new holder of athena my most trusted articial intelligence system or also called as A.i. I want you to use it for the greater good i'v never invent my A.i. for wrong doings so must do it too i give you my trusted articial intelligence or also called as a.i. And her name was athena. Athena is here to help you make a good choice")
+    elif "joke" in command:
+        talk(pyjokes.get.joke())
+    elif "how are you" ,in command:
+        talk'("i'm always fine i was created to be unstopable articial intelligence")
+    else:
+        talk("Please try agian")
+        
+run_athena()
